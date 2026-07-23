@@ -374,7 +374,6 @@ document.getElementById('finalSubmit').addEventListener('click', async () => {
   if(EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        to_email:      'manjeetk7979@gmail.com',
         student_name:  name,
         student_email: email,
         college:       college,
@@ -385,7 +384,11 @@ document.getElementById('finalSubmit').addEventListener('click', async () => {
       });
     } catch(err) {
       console.error('EmailJS error:', err);
-      // Don't block the user — still show success even if email fails
+      alert("EmailJS Error: " + (err.text || err.message || "Failed to send email. Check browser console."));
+      btn.textContent = 'Confirm My Seat ✓';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      return;
     }
   }
 
