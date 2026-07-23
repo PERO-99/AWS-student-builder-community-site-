@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speakers | AWS Student Builder Community Day · Rungta University</title>
+<meta name="description" content="Meet the AWS Solutions Architects, Community Builders, and industry leaders speaking at AWS SBG Community Day at Rungta University, Sep 12 2026.">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--font-display:'IBM Plex Mono',monospace;--font-body:'IBM Plex Mono',monospace;--aws-dark:#02040a;--aws-surface:#0a0f1c;--aws-blue:#00A8E1;--aws-orange:#FF9900;--text-primary:#ffffff;--text-secondary:rgba(255,255,255,0.7);--text-muted:rgba(255,255,255,0.4);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--aws-dark);color:var(--text-primary);overflow-x:hidden;line-height:1.6;}
+/* BG ANIMATION */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1;}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(77,181,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(77,181,255,0.035) 1px,transparent 1px);background-size:44px 44px;}
+.bg-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(77,181,255,0.07) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;z-index:0;animation:glowDrift 18s ease-in-out infinite alternate;}
+.bg-glow2{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,0.05) 0%,transparent 70%);bottom:0;left:-80px;pointer-events:none;z-index:0;animation:glowDrift 22s ease-in-out infinite alternate-reverse;}
+@keyframes glowDrift{0%{transform:translate(0,0);}100%{transform:translate(40px,60px);}}
+nav,section,.footer{position:relative;z-index:1;}
+.glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,0.08);border-radius:24px;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);}
+.glass::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);z-index:2;}
+.glass:hover{border-color:rgba(255,255,255,0.15);box-shadow:0 8px 32px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.1);}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 24px;transition:all 0.4s ease;}
+.nav.scrolled{padding:12px 24px;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(2,4,10,0.6);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.06);border-radius:16px;transition:all 0.4s ease;}
+.nav.scrolled .nav-inner{background:rgba(2,4,10,0.92);border-color:rgba(255,255,255,0.1);box-shadow:0 4px 30px rgba(0,0,0,0.4);}
+.nav-logo{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:800;font-size:15px;color:white;text-decoration:none;}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--aws-blue),var(--aws-orange));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:white;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.3s;position:relative;}
+.nav-links a:hover,.nav-links a.active{color:var(--text-primary);}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--aws-blue),var(--aws-orange));transition:width 0.3s ease;border-radius:1px;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{padding:10px 24px;background:linear-gradient(135deg,var(--aws-blue),#0077b6);color:white;border:none;border-radius:10px;font-family:var(--font-display);font-weight:600;font-size:14px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,168,225,0.3);}
+.mobile-btn{display:none;background:none;border:none;color:white;font-size:24px;cursor:pointer;}
+.mobile-menu{display:none;position:fixed;top:80px;left:24px;right:24px;background:rgba(2,4,10,0.97);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;z-index:999;flex-direction:column;gap:16px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--text-secondary);text-decoration:none;font-size:16px;font-weight:500;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.mobile-menu a:last-child{border-bottom:none;}
+section{position:relative;z-index:1;padding:100px 24px;}
+.container{max-width:1200px;margin:0 auto;}
+.section-header{text-align:center;margin-bottom:64px;}
+.section-num{display:inline-block;font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--aws-blue);letter-spacing:2px;margin-bottom:12px;text-transform:uppercase;}
+.section-title{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.1;}
+.section-desc{font-size:18px;color:var(--text-secondary);max-width:600px;margin:0 auto;}
+.btn-primary{padding:16px 40px;background:linear-gradient(135deg,var(--aws-blue),#0077b6);color:white;border:none;border-radius:14px;font-family:var(--font-display);font-weight:700;font-size:16px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 20px rgba(0,168,225,0.3);text-decoration:none;display:inline-block;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,168,225,0.4);}
+.btn-secondary{padding:16px 40px;background:transparent;color:white;border:1px solid rgba(255,255,255,0.15);border-radius:14px;font-family:var(--font-display);font-weight:600;font-size:16px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-secondary:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.3);transform:translateY(-3px);}
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.delay-1{transition-delay:0.1s;}.delay-2{transition-delay:0.2s;}.delay-3{transition-delay:0.3s;}
+/* PAGE HEADER */
+.page-header{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;padding:140px 24px 60px;overflow:hidden;text-align:center;}
+.page-header::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,168,225,.18) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);filter:blur(80px);z-index:0;}
+.page-header-content{position:relative;z-index:2;max-width:800px;}
+/* KEYNOTE */
+.keynote-card{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:center;padding:48px;}
+.keynote-image{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:1;}
+.keynote-image img{width:100%;height:100%;object-fit:cover;}
+.keynote-badge{position:absolute;top:16px;left:16px;padding:6px 16px;background:linear-gradient(135deg,var(--aws-blue),var(--aws-orange));border-radius:8px;font-size:12px;font-weight:700;font-family:var(--font-display);text-transform:uppercase;letter-spacing:1px;}
+.keynote-content h3{font-family:var(--font-display);font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:-1px;}
+.keynote-content .kn-role{font-size:16px;color:var(--aws-blue);font-weight:600;margin-bottom:8px;}
+.keynote-content .kn-company{font-size:14px;color:var(--text-muted);margin-bottom:20px;}
+.keynote-content p{color:var(--text-secondary);line-height:1.8;font-size:15px;margin-bottom:12px;}
+.keynote-topics{margin-top:24px;}
+.keynote-topics h4{font-family:var(--font-display);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;color:var(--text-secondary);}
+/* SPEAKERS GRID */
+.speakers-full{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;}
+.speaker-card-full{padding:0;cursor:pointer;transition:all 0.4s ease;}
+.speaker-card-full:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.speaker-img-full{width:100%;aspect-ratio:1;overflow:hidden;position:relative;}
+.speaker-img-full img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+.speaker-card-full:hover .speaker-img-full img{transform:scale(1.1);}
+.speaker-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,4,10,0.9) 0%,transparent 60%);opacity:0;transition:opacity 0.4s ease;}
+.speaker-card-full:hover .speaker-img-overlay{opacity:1;}
+.speaker-social-overlay{position:absolute;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);display:flex;gap:12px;opacity:0;transition:all 0.4s ease;}
+.speaker-card-full:hover .speaker-social-overlay{opacity:1;transform:translateX(-50%) translateY(0);}
+.speaker-social-overlay a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:14px;font-weight:700;transition:all 0.3s;}
+.speaker-social-overlay a:hover{background:var(--aws-blue);border-color:var(--aws-blue);}
+.speaker-info-full{padding:28px;position:relative;z-index:2;}
+.speaker-name-full{font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:6px;}
+.speaker-role-full{font-size:15px;color:var(--aws-blue);font-weight:600;margin-bottom:8px;}
+.speaker-company-full{font-size:14px;color:var(--text-muted);margin-bottom:12px;}
+.speaker-bio{font-size:14px;color:var(--text-secondary);line-height:1.7;}
+.speaker-tags{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.speaker-tag{padding:4px 12px;background:rgba(0,168,225,0.08);border:1px solid rgba(0,168,225,0.15);border-radius:6px;font-size:11px;font-weight:600;font-family:var(--font-display);text-transform:uppercase;color:var(--aws-blue);letter-spacing:0.5px;}
+.cta-section{text-align:center;padding:80px 24px;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap;}
+.footer{padding:60px 24px 30px;border-top:1px solid rgba(255,255,255,0.05);position:relative;z-index:1;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 48px;}
+.footer-brand{font-family:var(--font-display);font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.footer-brand-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--aws-blue),var(--aws-orange));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:white;}
+.footer-desc{color:var(--text-muted);font-size:14px;line-height:1.7;margin-bottom:20px;}
+.footer-social{display:flex;gap:10px;}
+.footer-social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);text-decoration:none;font-size:14px;transition:all 0.3s;}
+.footer-social a:hover{background:var(--aws-blue);color:white;}
+.footer-title{font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:20px;text-transform:uppercase;letter-spacing:1px;}
+.footer-links{list-style:none;}.footer-links li{margin-bottom:12px;}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:14px;transition:color 0.3s;}
+.footer-links a:hover{color:var(--aws-blue);}
+.footer-bottom{text-align:center;padding-top:30px;border-top:1px solid rgba(255,255,255,0.05);max-width:1200px;margin:0 auto;color:var(--text-muted);font-size:13px;}
+::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:var(--aws-dark);}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:4px;}
+@media(max-width:768px){.nav-links,.nav-cta{display:none;}.mobile-btn{display:block;}.speakers-full{grid-template-columns:1fr;}.keynote-card{grid-template-columns:1fr;padding:28px;}.keynote-image{aspect-ratio:16/10;}.cta-buttons{flex-direction:column;align-items:center;}.footer-grid{grid-template-columns:1fr 1fr;}section{padding:60px 20px;}}
+</style>
+</head>
+<body>
+
+<div class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">S</div>
+      <span>AWS SBG <span style="color:rgba(255,255,255,0.4)">Rungta</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="speakers.html" class="active">Speakers</a></li>
+      <li><a href="tracks.html">Tracks</a></li>
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="venue.html">Venue</a></li>
+    </ul>
+    <a href="register.html" class="nav-cta">Register Free</a>
+    <button class="mobile-btn" onclick="toggleMobile()">☰</button>
+  </div>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="speakers.html">Speakers</a>
+  <a href="tracks.html">Tracks</a>
+  <a href="agenda.html">Agenda</a>
+  <a href="venue.html">Venue</a>
+  <a href="register.html">Register Free</a>
+</div>
+
+<section class="page-header">
+  <div class="page-header-content reveal">
+    <div class="section-num">02 // Speakers</div>
+    <h1 class="section-title">Meet The Experts</h1>
+    <p class="section-desc">AWS Solutions Architects, ML specialists, Community Builders, and alumni sharing real knowledge — no slides-only sessions.</p>
+  </div>
+</section>
+
+<!-- KEYNOTE SPEAKER -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="keynote-card glass reveal">
+      <div class="keynote-image">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face" alt="Rahul Sharma" loading="lazy">
+        <div class="keynote-badge">Keynote</div>
+      </div>
+      <div class="keynote-content">
+        <h3>Rahul Sharma</h3>
+        <div class="kn-role">Solutions Architect</div>
+        <div class="kn-company">Amazon Web Services</div>
+        <p>Rahul leads cloud architecture strategy for enterprise customers across India. With 8+ years in distributed systems and cloud-native development, he brings deep expertise in serverless, containers, and AI/ML infrastructure.</p>
+        <p>Previously built large-scale systems at Flipkart and has spoken at AWS re:Invent, KubeCon, and 50+ community events.</p>
+        <div class="keynote-topics">
+          <h4>Speaking On</h4>
+          <div class="speaker-tags">
+            <span class="speaker-tag">Future of Cloud</span>
+            <span class="speaker-tag">Serverless Architecture</span>
+            <span class="speaker-tag">AI Infrastructure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL SPEAKERS -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-num">All Speakers</div>
+      <h2 class="section-title">The Full Lineup</h2>
+      <p class="section-desc">8 speakers across technical sessions, workshops, panels, and the build sprint demo night.</p>
+    </div>
+    <div class="speakers-full">
+
+      <div class="speaker-card-full glass reveal">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face" alt="Priya Patel" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Priya Patel</div>
+          <div class="speaker-role-full">Cloud Developer Advocate</div>
+          <div class="speaker-company-full">AWS India</div>
+          <div class="speaker-bio">Passionate about making cloud accessible to students. Leads the AWS Student Programs initiative across 50+ universities.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Lambda</span><span class="speaker-tag">API Gateway</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal delay-1">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="Amit Verma" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Amit Verma</div>
+          <div class="speaker-role-full">Student Builder Lead</div>
+          <div class="speaker-company-full">AWS SBG Rungta</div>
+          <div class="speaker-bio">Founder of AWS SBG at Rungta. Organized 20+ cloud workshops and mentored 500+ students through cloud certifications.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Community</span><span class="speaker-tag">Leadership</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal delay-2">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Sneha Gupta" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Sneha Gupta</div>
+          <div class="speaker-role-full">ML Specialist</div>
+          <div class="speaker-company-full">AWS AI/ML Team</div>
+          <div class="speaker-bio">Specializes in Amazon Bedrock, SageMaker, and generative AI applications. Published researcher in NLP and computer vision.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Bedrock</span><span class="speaker-tag">SageMaker</span><span class="speaker-tag">GenAI</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face" alt="Vikram Rao" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Vikram Rao</div>
+          <div class="speaker-role-full">Senior DevOps Engineer</div>
+          <div class="speaker-company-full">AWS Partner Network</div>
+          <div class="speaker-bio">Expert in CI/CD pipelines, infrastructure as code, and container orchestration with ECS and EKS.</div>
+          <div class="speaker-tags"><span class="speaker-tag">DevOps</span><span class="speaker-tag">EKS</span><span class="speaker-tag">Terraform</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal delay-1">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face" alt="Ananya Reddy" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Ananya Reddy</div>
+          <div class="speaker-role-full">Security Specialist</div>
+          <div class="speaker-company-full">AWS Security Team</div>
+          <div class="speaker-bio">Cloud security architect focusing on IAM, encryption, and compliance frameworks for regulated industries.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Security</span><span class="speaker-tag">IAM</span><span class="speaker-tag">Compliance</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal delay-2">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face" alt="Karan Mehta" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Karan Mehta</div>
+          <div class="speaker-role-full">Data Engineer</div>
+          <div class="speaker-company-full">AWS Analytics</div>
+          <div class="speaker-bio">Builds real-time data pipelines using Kinesis, Glue, and Redshift. Passionate about data lakes and analytics at scale.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Data</span><span class="speaker-tag">Redshift</span><span class="speaker-tag">Glue</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&crop=face" alt="Dr. Meera Joshi" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Dr. Meera Joshi</div>
+          <div class="speaker-role-full">Faculty Lead, CS Dept</div>
+          <div class="speaker-company-full">Rungta University</div>
+          <div class="speaker-bio">Faculty champion for the AWS Cloud Club and educator integrating cloud computing into engineering curricula.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Education</span><span class="speaker-tag">Research</span></div>
+        </div>
+      </div>
+
+      <div class="speaker-card-full glass reveal delay-1">
+        <div class="speaker-img-full">
+          <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&h=400&fit=crop&crop=face" alt="Devansh Patil" loading="lazy">
+          <div class="speaker-img-overlay"></div>
+          <div class="speaker-social-overlay"><a href="#">in</a><a href="#">X</a></div>
+        </div>
+        <div class="speaker-info-full">
+          <div class="speaker-name-full">Devansh Patil</div>
+          <div class="speaker-role-full">Student Organizer</div>
+          <div class="speaker-company-full">AWS Cloud Club Lead</div>
+          <div class="speaker-bio">Student founder of the Rungta AWS Cloud Club. Organizing this day from the ground up — and shipping his own project in the build sprint.</div>
+          <div class="speaker-tags"><span class="speaker-tag">Community</span><span class="speaker-tag">Organizer</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container reveal">
+    <div class="section-num">03 // Join Us</div>
+    <h2 class="section-title">Don't Miss These Sessions</h2>
+    <p class="section-desc">Register now — free entry, certificate, and swag for every builder who shows up.</p>
+    <div class="cta-buttons">
+      <a href="register.html" class="btn-primary">Register Free</a>
+      <a href="agenda.html" class="btn-secondary">View Full Agenda</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand"><div class="footer-brand-icon">S</div>AWS SBG Rungta</div>
+      <p class="footer-desc">Organized by the AWS Cloud Club at Rungta University — a student-led community under the AWS Student Builder program.</p>
+      <div class="footer-social"><a href="#">X</a><a href="#">in</a><a href="#">ig</a><a href="#">yt</a></div>
+    </div>
+    <div>
+      <div class="footer-title">Event</div>
+      <ul class="footer-links">
+        <li><a href="tracks.html">Tracks</a></li><li><a href="agenda.html">Agenda</a></li>
+        <li><a href="speakers.html">Speakers</a></li><li><a href="register.html">Register</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="venue.html">Venue & FAQ</a></li><li><a href="about.html">About</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:sbg@rungta.ac.in">sbg@rungta.ac.in</a></li>
+        <li><a href="#">Bhilai, CG 490024</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 AWS Cloud Club, Rungta University · Bhilai, Chhattisgarh, India</div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open')}
+</script>
+<!-- BG LAYERS -->
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+<canvas id="bg-canvas"></canvas>
+
+<script>
+// ===== NETWORK PARTICLE ANIMATION =====
+(function(){
+  const canvas = document.getElementById('bg-canvas');
+  const ctx    = canvas.getContext('2d');
+  const CYAN   = '77,181,255';
+  const COUNT  = Math.min(55, Math.floor(window.innerWidth / 22));
+  let W, H, pts;
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function makePoint(){
+    return {
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      r:  Math.random() * 1.5 + 0.5
+    };
+  }
+
+  function init(){
+    resize();
+    pts = Array.from({length: COUNT}, makePoint);
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+
+    // Update positions
+    pts.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < 0 || p.x > W) p.vx *= -1;
+      if(p.y < 0 || p.y > H) p.vy *= -1;
+    });
+
+    // Draw connections
+    for(let i = 0; i < pts.length; i++){
+      for(let j = i+1; j < pts.length; j++){
+        const dx   = pts[i].x - pts[j].x;
+        const dy   = pts[i].y - pts[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        const MAX  = 140;
+        if(dist < MAX){
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = `rgba(${CYAN},${(1 - dist/MAX) * 0.6})`;
+          ctx.lineWidth   = 1.2;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw dots
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${CYAN},0.9)`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', ()=>{ resize(); pts = Array.from({length: COUNT}, makePoint); });
+  init();
+  draw();
+})();
+</script>
+</body>
+</html>

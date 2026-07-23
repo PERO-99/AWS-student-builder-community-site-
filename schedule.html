@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule & Register | AWS Student Builder Community Day</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===== VARIABLES ===== */
+:root {
+  --font-display: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Mono', monospace;
+  --aws-dark: #02040a;
+  --aws-surface: #0a0f1c;
+  --aws-blue: #00A8E1;
+  --aws-orange: #FF9900;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.7);
+  --text-muted: rgba(255,255,255,0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--aws-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===== LIQUID GLASS ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  z-index: 2;
+}
+.glass::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.glass:hover {
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 24px;
+  transition: all 0.4s ease;
+}
+.nav.scrolled { padding: 12px 24px; }
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(2, 4, 10, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+.nav.scrolled .nav-inner {
+  background: rgba(2, 4, 10, 0.9);
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  color: white;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--aws-blue), var(--aws-orange));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+  font-family: var(--font-display);
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--text-primary);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--aws-blue), var(--aws-orange));
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+  width: 100%;
+}
+.nav-cta {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--aws-blue), #0077b6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,168,225,0.3);
+}
+.mobile-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 24px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--aws-blue);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.section-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(0, 168, 225, 0.1);
+  border: 1px solid rgba(0, 168, 225, 0.15);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--aws-blue);
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.section-desc {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--aws-blue), #0077b6);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 168, 225, 0.3);
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 168, 225, 0.4);
+}
+.btn-secondary {
+  padding: 16px 40px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-3px);
+}
+
+/* ===== REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 60px 24px 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  z-index: 1;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-brand-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--aws-blue), var(--aws-orange));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+}
+.footer-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+.footer-social a:hover {
+  background: var(--aws-blue);
+  color: white;
+}
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--aws-blue); }
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ===== MOBILE ===== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px; left: 24px; right: 24px;
+  background: rgba(2, 4, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  z-index: 999;
+  flex-direction: column;
+  gap: 16px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--font-body);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-btn { display: block; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  section { padding: 60px 20px; }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--aws-dark); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+
+.page-header {
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: 140px 24px 60px;
+  overflow: hidden;
+  text-align: center;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,153,0,.15) 0%, transparent 70%);
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  filter: blur(80px);
+  z-index: 0;
+}
+.page-header-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.schedule-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.schedule-tab {
+  padding: 12px 32px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.schedule-tab.active, .schedule-tab:hover {
+  background: rgba(0, 168, 225, 0.1);
+  border-color: rgba(0, 168, 225, 0.3);
+  color: var(--aws-blue);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--aws-blue), var(--aws-orange));
+  border-radius: 1px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+  padding: 28px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -35px;
+  top: 32px;
+  width: 14px; height: 14px;
+  background: var(--aws-dark);
+  border: 3px solid var(--aws-blue);
+  border-radius: 50%;
+  z-index: 2;
+}
+.timeline-time {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--aws-orange);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.timeline-speaker {
+  font-size: 14px;
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+}
+.timeline-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 168, 225, 0.1);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: var(--aws-blue);
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+
+.venue-showcase {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.venue-main-image {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+.venue-main-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.venue-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.venue-thumb {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  position: relative;
+}
+.venue-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.venue-thumb:hover img { transform: scale(1.1); }
+.venue-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+.venue-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+}
+.venue-detail-icon {
+  width: 44px; height: 44px;
+  background: rgba(0, 168, 225, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aws-blue);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.venue-detail-text h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.venue-detail-text p {
+  font-size: 14px;
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.register-section {
+  position: relative;
+  overflow: hidden;
+}
+.register-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,168,225,.25) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+}
+.register-container {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.register-form {
+  padding: 48px;
+}
+.form-group {
+  margin-bottom: 24px;
+}
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  font-family: var(--font-body);
+  transition: all 0.3s;
+  outline: none;
+}
+.form-input:focus {
+  border-color: var(--aws-blue);
+  background: rgba(0, 168, 225, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 168, 225, 0.1);
+}
+.form-input::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--aws-blue), #0077b6);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+}
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 168, 225, 0.4);
+}
+.form-submit.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 48px;
+}
+.success-message.show {
+  display: block;
+  animation: successPop 0.5s ease;
+}
+@keyframes successPop {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.success-icon {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--aws-blue), var(--aws-orange));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 36px;
+  color: white;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 80px 24px;
+}
+.cta-section .section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  margin-bottom: 20px;
+}
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .venue-showcase { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .timeline { padding-left: 30px; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="aurora"></canvas>
+<div class="grain"></div>
+<div class="bg-glow-global"></div>
+
+<div class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">S</div>
+      <span>AWS SBG <span style="color:rgba(255,255,255,0.4)">Rungta</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="speakers.html">Speakers</a></li>
+      <li><a href="schedule.html" class="active">Schedule</a></li>
+    </ul>
+    <a href="#register" class="nav-cta">Register Now</a>
+    <button class="mobile-btn" onclick="toggleMobile()">☰</button>
+  </div>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="speakers.html">Speakers</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="#register">Register</a>
+</div>
+
+<section class="page-header">
+  <div class="page-header-content reveal">
+    <div class="section-num">03 // Schedule</div>
+    <h1 class="section-title">Event Timeline</h1>
+    <p class="section-desc">A packed day of learning, building, and connecting with the cloud community. Two tracks running simultaneously.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="schedule-tabs reveal">
+      <button class="schedule-tab active" onclick="switchTab(this,'track1')">Main Track</button>
+      <button class="schedule-tab" onclick="switchTab(this,'track2')">Workshops</button>
+    </div>
+    <div class="timeline reveal" id="track1">
+      <div class="timeline-item glass">
+        <div class="timeline-time">09:00 AM</div>
+        <div class="timeline-title">Registration & Breakfast</div>
+        <div class="timeline-speaker">Collect your badge, swag kit, and networking guide</div>
+        <span class="timeline-tag">General</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">10:00 AM</div>
+        <div class="timeline-title">Opening Keynote: Future of Cloud</div>
+        <div class="timeline-speaker">Rahul Sharma &mdash; Solutions Architect, AWS</div>
+        <span class="timeline-tag">Keynote</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">11:30 AM</div>
+        <div class="timeline-title">Building Serverless Apps with Lambda</div>
+        <div class="timeline-speaker">Priya Patel &mdash; Developer Advocate, AWS India</div>
+        <span class="timeline-tag">Technical</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">01:00 PM</div>
+        <div class="timeline-title">Lunch & Networking</div>
+        <div class="timeline-speaker">Connect with speakers, mentors, and fellow students</div>
+        <span class="timeline-tag">Break</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">02:30 PM</div>
+        <div class="timeline-title">AI/ML with Amazon Bedrock</div>
+        <div class="timeline-speaker">Sneha Gupta &mdash; ML Specialist, AWS</div>
+        <span class="timeline-tag">Technical</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">04:30 PM</div>
+        <div class="timeline-title">Cloud Quest Challenge & Prizes</div>
+        <div class="timeline-speaker">Compete in real-time AWS challenges</div>
+        <span class="timeline-tag">Competition</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">06:00 PM</div>
+        <div class="timeline-title">Closing Ceremony & Group Photo</div>
+        <div class="timeline-speaker">Certificates, prizes, and community celebration</div>
+        <span class="timeline-tag">Closing</span>
+      </div>
+    </div>
+    <div class="timeline reveal" id="track2" style="display:none;">
+      <div class="timeline-item glass">
+        <div class="timeline-time">10:30 AM</div>
+        <div class="timeline-title">AWS Account Setup & IAM Basics</div>
+        <div class="timeline-speaker">Hands-on lab for beginners</div>
+        <span class="timeline-tag">Beginner</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">12:00 PM</div>
+        <div class="timeline-title">Deploy Your First EC2 Instance</div>
+        <div class="timeline-speaker">Step-by-step cloud deployment workshop</div>
+        <span class="timeline-tag">Beginner</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">02:00 PM</div>
+        <div class="timeline-title">S3 & CloudFront for Static Hosting</div>
+        <div class="timeline-speaker">Build and host a portfolio website</div>
+        <span class="timeline-tag">Intermediate</span>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-time">03:30 PM</div>
+        <div class="timeline-title">DynamoDB & API Gateway Deep Dive</div>
+        <div class="timeline-speaker">Full-stack serverless architecture</div>
+        <span class="timeline-tag">Advanced</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="venue">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-num">04 // Venue</div>
+      <h2 class="section-title">Rungta University</h2>
+      <p class="section-desc">World-class infrastructure in the heart of Chhattisgarh.</p>
+    </div>
+    <div class="venue-showcase reveal">
+      <div class="venue-main-image glass">
+        <img src="https://kimi-web-img.moonshot.cn/img/rungta.ac.in/f94e5476be31c5ac5b9f9a711703a751cdd01599.webp" alt="Rungta Block A" loading="lazy">
+      </div>
+      <div>
+        <div class="venue-gallery">
+          <div class="venue-thumb glass"><img src="https://kimi-web-img.moonshot.cn/img/rungta.ac.in/b517d98c1984dd614d2bbe1fec2cabdbafbb58b6.webp" alt="Campus" loading="lazy"></div>
+          <div class="venue-thumb glass"><img src="https://kimi-web-img.moonshot.cn/img/rungta.ac.in/b48286c9b3a3a4bc4780cb79aae392e437a9d9ae.webp" alt="Library" loading="lazy"></div>
+          <div class="venue-thumb glass"><img src="https://kimi-web-img.moonshot.cn/img/rungta.ac.in/c443e7d641ee0f27137d5b20c04b851cfaa32a25.webp" alt="Infrastructure" loading="lazy"></div>
+          <div class="venue-thumb glass" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,168,225,.1),rgba(255,153,0,.1))"><span style="font-size:32px;font-weight:900;font-family:var(--font-display);color:var(--aws-blue)">500+</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="venue-details reveal">
+      <div class="venue-detail glass">
+        <div class="venue-detail-icon">&#128205;</div>
+        <div class="venue-detail-text">
+          <h4>Address</h4>
+          <p>Rungta University, Kohka-Kurud Road, Bhilai, Chhattisgarh 490024</p>
+        </div>
+      </div>
+      <div class="venue-detail glass">
+        <div class="venue-detail-icon">&#127963;</div>
+        <div class="venue-detail-text">
+          <h4>Venue Hall</h4>
+          <p>Central Auditorium, Block A &mdash; Capacity for 500+ attendees with AV setup</p>
+        </div>
+      </div>
+      <div class="venue-detail glass">
+        <div class="venue-detail-icon">&#128652;</div>
+        <div class="venue-detail-text">
+          <h4>Transport</h4>
+          <p>Free shuttle from Bhilai Bus Stand &amp; Durg Railway Station</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register" class="register-section">
+  <div class="register-glow"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-num">05 // Register</div>
+      <h2 class="section-title">Secure Your Spot</h2>
+      <p class="section-desc">Join 500+ students for a day of cloud innovation. Completely free.</p>
+    </div>
+    <div class="register-container reveal">
+      <div class="glass register-form" id="regForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-input" placeholder="John Doe" id="fn">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-input" placeholder="john@email.com" id="em">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" class="form-input" placeholder="+91 98765 43210" id="ph">
+          </div>
+          <div class="form-group">
+            <label>College</label>
+            <input type="text" class="form-input" placeholder="Rungta University" id="cl">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Year of Study</label>
+          <select class="form-input" id="yr" style="cursor:pointer">
+            <option value="" style="background:#0a0f1c">Select Year</option>
+            <option value="1" style="background:#0a0f1c">1st Year</option>
+            <option value="2" style="background:#0a0f1c">2nd Year</option>
+            <option value="3" style="background:#0a0f1c">3rd Year</option>
+            <option value="4" style="background:#0a0f1c">4th Year</option>
+            <option value="other" style="background:#0a0f1c">Other</option>
+          </select>
+        </div>
+        <button class="form-submit" id="sb" onclick="submitReg()">Complete Registration</button>
+      </div>
+      <div class="success-message" id="successMsg">
+        <div class="success-icon">&#10003;</div>
+        <h3 style="font-family:var(--font-display);font-size:28px;font-weight:800;margin-bottom:12px">You are Registered!</h3>
+        <p style="color:var(--text-secondary);font-family:var(--font-body);margin-bottom:24px">Check your email for confirmation and event details.</p>
+        <button class="btn-secondary" onclick="resetForm()">Register Another</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container reveal">
+    <div class="section-num">06 // Questions</div>
+    <h2 class="section-title">Need Help?</h2>
+    <p class="section-desc">Reach out to the AWS SBG team for any questions about the event, registration, or logistics.</p>
+    <div class="cta-buttons">
+      <a href="mailto:sbg@rungta.ac.in" class="btn-primary">Email Us</a>
+      <a href="index.html" class="btn-secondary">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand"><div class="footer-brand-icon">S</div>AWS SBG Rungta</div>
+      <p class="footer-desc">Empowering the next generation of cloud builders at Rungta University through hands-on learning, community, and innovation.</p>
+      <div class="footer-social">
+        <a href="#">X</a><a href="#">in</a><a href="#">ig</a><a href="#">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title">Event</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="#">AWS Free Tier</a></li>
+        <li><a href="#">Student Builder</a></li>
+        <li><a href="#">Certifications</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:sbg@rungta.ac.in">sbg@rungta.ac.in</a></li>
+        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+        <li><a href="#">Bhilai, CG, India</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 AWS Student Builder Group Rungta University. Built with passion for the cloud community.</div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open')}
+function switchTab(btn,id){document.querySelectorAll('.schedule-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('track1').style.display=id==='track1'?'block':'none';document.getElementById('track2').style.display=id==='track2'?'block':'none'}
+function submitReg(){const fn=document.getElementById('fn').value,em=document.getElementById('em').value,ph=document.getElementById('ph').value,cl=document.getElementById('cl').value,yr=document.getElementById('yr').value;
+  if(!fn||!em||!ph||!cl||!yr){alert('Please fill all fields');return}
+  const sb=document.getElementById('sb');sb.classList.add('loading');sb.textContent='Registering...';
+  setTimeout(()=>{document.getElementById('regForm').style.display='none';document.getElementById('successMsg').classList.add('show')},1500)}
+function resetForm(){document.getElementById('regForm').style.display='block';document.getElementById('successMsg').classList.remove('show');document.getElementById('sb').classList.remove('loading');document.getElementById('sb').textContent='Complete Registration';document.querySelectorAll('.form-input').forEach(i=>i.value='')}
+</script>
+</body>
+</html>
+

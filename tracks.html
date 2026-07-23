@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracks · AWS Student Builder Community Day</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="aurora"></canvas>
+<div class="grain"></div>
+<div class="bg-glow-global"></div>
+<div class="vignette"></div>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="3" fill="#04121f"/><circle cx="5" cy="6" r="2" fill="#04121f"/><circle cx="19" cy="6" r="2" fill="#04121f"/>
+          <circle cx="5" cy="18" r="2" fill="#04121f"/><circle cx="19" cy="18" r="2" fill="#04121f"/>
+          <path d="M12 12L5 6M12 12L19 6M12 12L5 18M12 12L19 18" stroke="#04121f" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div>Student Builder Day<span class="sub">Rungta University</span></div>
+    </div>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tracks.html" class="active">Tracks</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="speakers.html">Speakers</a>
+      <a href="venue.html">Venue &amp; FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="btn-icon" data-share aria-label="Share this page">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      </button>
+      <a href="register.html" class="btn btn-primary">Register</a>
+      <div class="burger" id="burger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu glass glass-tight" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="tracks.html" class="active">Tracks</a>
+  <a href="agenda.html">Agenda</a>
+  <a href="speakers.html">Speakers</a>
+  <a href="venue.html">Venue &amp; FAQ</a>
+  <a href="register.html">Register</a>
+</div>
+
+<main>
+
+  <section class="page-hero wrap">
+    <div class="eyebrow" style="justify-content:center;">03 // Choose your lane</div>
+    <h1>Six tracks. Zero filler.</h1>
+    <p>Every track is led by a working practitioner and ends with a hands-on build, not just a slide deck. Filter by interest below.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0;">
+    <div class="tabs">
+      <button class="tab active" data-filter="all">All (6)</button>
+      <button class="tab" data-filter="ai">Generative AI</button>
+      <button class="tab" data-filter="infra">Infrastructure</button>
+      <button class="tab" data-filter="ops">DevOps</button>
+      <button class="tab" data-filter="security">Security</button>
+      <button class="tab" data-filter="community">Community</button>
+    </div>
+
+    <div class="track-grid">
+
+      <div class="track-card glass glass-tight reveal" data-cat="ai">
+        <div class="track-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg></div>
+        <span class="track-tag">TRACK 01 · GENERATIVE AI</span>
+        <h3>Generative AI &amp; Amazon Bedrock</h3>
+        <p>Prompt engineering, RAG basics, and shipping a small foundation-model app by end of session.</p>
+      </div>
+
+      <div class="track-card glass glass-tight reveal" data-cat="infra">
+        <div class="track-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></svg></div>
+        <span class="track-tag">TRACK 02 · INFRASTRUCTURE</span>
+        <h3>Serverless on AWS</h3>
+        <p>Lambda, API Gateway, and EventBridge — go from zero to a deployed API with no server to manage.</p>
+      </div>
+
+      <div class="track-card glass glass-tight reveal" data-cat="infra">
+        <div class="track-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <span class="track-tag">TRACK 03 · INFRASTRUCTURE</span>
+        <h3>Cloud Architecture Fundamentals</h3>
+        <p>Well-Architected basics for students: what actually breaks at scale, and how to design around it.</p>
+      </div>
+
+      <div class="track-card glass glass-tight reveal" data-cat="ops">
+        <div class="track-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
+        <span class="track-tag">TRACK 04 · DEVOPS</span>
+        <h3>DevOps &amp; CI/CD</h3>
+        <p>CodePipeline, containers, and GitHub Actions — automate the boring parts of shipping software.</p>
+      </div>
+
+      <div class="track-card glass glass-tight reveal" data-cat="security">
+        <div class="track-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.7 8 10 4.5-1.3 8-5 8-10V6l-8-4Z"/></svg></div>
+        <span class="track-tag">TRACK 05 · SECURITY</span>
+        <h3>Security in the Cloud</h3>
+        <p>IAM, least privilege, and the shared-responsibility model — build habits that survive production.</p>
+      </div>
+
+      <div class="track-card glass glass-tight reveal" data-cat="community">
+        <div class="track-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7.2 10.5 16M15.8 7.2 13.5 16M8.5 6h7"/></svg></div>
+        <span class="track-tag">TRACK 06 · COMMUNITY</span>
+        <h3>Open Source &amp; Community</h3>
+        <p>How to make your first real contribution, and what the AWS Community Builders path looks like.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="register-banner glass reveal">
+      <h2>Pick a track. Reserve your seat.</h2>
+      <p>You'll confirm your track preference during registration — no need to decide right now.</p>
+      <a href="register.html" class="btn btn-primary btn-lg">Reserve your seat</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="3" fill="#04121f"/><circle cx="5" cy="6" r="2" fill="#04121f"/><circle cx="19" cy="6" r="2" fill="#04121f"/>
+              <circle cx="5" cy="18" r="2" fill="#04121f"/><circle cx="19" cy="18" r="2" fill="#04121f"/>
+              <path d="M12 12L5 6M12 12L19 6M12 12L5 18M12 12L19 18" stroke="#04121f" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <div>Student Builder Day<span class="sub">Rungta University</span></div>
+        </div>
+        <p>Organized by the AWS Cloud Club at Rungta University — a student-led community under the AWS Student Builder program.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Event</h5>
+          <a href="tracks.html">Tracks</a>
+          <a href="agenda.html">Agenda</a>
+          <a href="speakers.html">Speakers</a>
+        </div>
+        <div class="footer-col">
+          <h5>Info</h5>
+          <a href="venue.html">Venue &amp; FAQ</a>
+          <a href="register.html">Register</a>
+          <a href="index.html">Home</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AWS Cloud Club, Rungta University</span>
+      <span>Bhilai, Chhattisgarh, India</span>
+    </div>
+    <p class="disclaimer">This is a community-organized, student-led event hosted by the AWS Cloud Club at Rungta University. It is not officially operated, sponsored, or endorsed by Amazon Web Services, Inc.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · AWS Student Builder Community Day</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="aurora"></canvas>
+<div class="grain"></div>
+<div class="bg-glow-global"></div>
+<div class="vignette"></div>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="3" fill="#04121f"/><circle cx="5" cy="6" r="2" fill="#04121f"/><circle cx="19" cy="6" r="2" fill="#04121f"/>
+          <circle cx="5" cy="18" r="2" fill="#04121f"/><circle cx="19" cy="18" r="2" fill="#04121f"/>
+          <path d="M12 12L5 6M12 12L19 6M12 12L5 18M12 12L19 18" stroke="#04121f" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div>Student Builder Day<span class="sub">Rungta University</span></div>
+    </div>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="tracks.html">Tracks</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="speakers.html">Speakers</a>
+      <a href="venue.html">Venue &amp; FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="btn-icon" data-share aria-label="Share this page">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      </button>
+      <a href="register.html" class="btn btn-primary">Register</a>
+      <div class="burger" id="burger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu glass glass-tight" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="tracks.html">Tracks</a>
+  <a href="agenda.html">Agenda</a>
+  <a href="speakers.html">Speakers</a>
+  <a href="venue.html">Venue &amp; FAQ</a>
+  <a href="register.html">Register</a>
+</div>
+
+<main>
+
+  <section class="page-hero wrap">
+    <div class="eyebrow" style="justify-content:center;">01 // About us</div>
+    <h1>Architecting cloud culture<br>at Rungta University.</h1>
+    <p>A student-run AWS community bringing hands-on cloud engineering, mentorship, and hackathons to campus.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0;">
+    <div class="pillar-grid">
+      <div class="pillar-card glass glass-tight reveal">
+        <span class="tag">Who we are</span>
+        <h4>Cloud pioneers on campus</h4>
+        <p>A vibrant student-run tech community backed by the AWS Student Builder program — developers, designers, and organizers who care about cloud computing.</p>
+      </div>
+      <div class="pillar-card glass glass-tight reveal">
+        <span class="tag">Our mission</span>
+        <h4>Empowering student builders</h4>
+        <p>Bridging academic learning and industry cloud engineering through workshops, mentorship, and collaborative projects open to every student.</p>
+      </div>
+      <div class="pillar-card glass glass-tight reveal">
+        <span class="tag">Our vision</span>
+        <h4>Shaping tomorrow's tech leaders</h4>
+        <p>Establishing Rungta University as a hub of cloud innovation — producing certified student builders and industry-ready graduates.</p>
+      </div>
+      <div class="pillar-card glass glass-tight reveal">
+        <span class="tag">What we do</span>
+        <h4>Events, labs &amp; bootcamps</h4>
+        <p>Technical workshops, cloud bootcamps, speaker sessions, and inter-college hackathons, run year-round by the campus Cloud Club.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BANNER -->
+  <div class="wrap">
+    <div class="photo-banner reveal">
+      <img src="https://images.pexels.com/photos/5940833/pexels-photo-5940833.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Students learning together on laptops in a classroom">
+      <div class="cap">
+        <span>Year-round, not just one day</span>
+        <h3>The Cloud Club runs monthly meetups all year — Community Day is the one where everyone shows up.</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">02 // Why attend</div>
+      <h2>What you actually walk away with.</h2>
+      <p>Beyond the certificate — the concrete stuff that shows up on a resume or a GitHub profile.</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">01</span><h4>A shipped project</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">02</span><h4>AWS learning credits &amp; resources</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">03</span><h4>Direct industry networking</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">04</span><h4>Team &amp; collaboration practice</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">05</span><h4>A digital certificate</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">06</span><h4>Community recognition</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">07</span><h4>Real-world build experience</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">08</span><h4>A path to Community Builder</h4></div>
+      <div class="benefit-card glass glass-tight reveal"><span class="benefit-num">09</span><h4>Cloud Club membership</h4></div>
+    </div>
+  </section>
+
+  <!-- ORGANIZING TEAM -->
+  <section class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">Behind the scenes</div>
+      <h2>Run by students, for students.</h2>
+      <p>The Rungta University Cloud Club core team organizing this day.</p>
+    </div>
+    <div class="team-grid" id="teamGrid"></div>
+  </section>
+
+  <div class="wrap">
+    <div class="register-banner glass reveal">
+      <h2>Ready to build with us?</h2>
+      <p>Registration takes under a minute and holds your seat instantly.</p>
+      <a href="register.html" class="btn btn-primary btn-lg">Reserve your seat</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="3" fill="#04121f"/><circle cx="5" cy="6" r="2" fill="#04121f"/><circle cx="19" cy="6" r="2" fill="#04121f"/>
+              <circle cx="5" cy="18" r="2" fill="#04121f"/><circle cx="19" cy="18" r="2" fill="#04121f"/>
+              <path d="M12 12L5 6M12 12L19 6M12 12L5 18M12 12L19 18" stroke="#04121f" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <div>Student Builder Day<span class="sub">Rungta University</span></div>
+        </div>
+        <p>Organized by the AWS Cloud Club at Rungta University — a student-led community under the AWS Student Builder program.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Event</h5>
+          <a href="tracks.html">Tracks</a>
+          <a href="agenda.html">Agenda</a>
+          <a href="speakers.html">Speakers</a>
+        </div>
+        <div class="footer-col">
+          <h5>Info</h5>
+          <a href="venue.html">Venue &amp; FAQ</a>
+          <a href="register.html">Register</a>
+          <a href="index.html">Home</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AWS Cloud Club, Rungta University</span>
+      <span>Bhilai, Chhattisgarh, India</span>
+    </div>
+    <p class="disclaimer">This is a community-organized, student-led event hosted by the AWS Cloud Club at Rungta University. It is not officially operated, sponsored, or endorsed by Amazon Web Services, Inc. Photography courtesy of contributors on Pexels, used under the Pexels license.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

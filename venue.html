@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venue &amp; FAQ · AWS Student Builder Community Day</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="aurora"></canvas>
+<div class="grain"></div>
+<div class="bg-glow-global"></div>
+<div class="vignette"></div>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="3" fill="#04121f"/><circle cx="5" cy="6" r="2" fill="#04121f"/><circle cx="19" cy="6" r="2" fill="#04121f"/>
+          <circle cx="5" cy="18" r="2" fill="#04121f"/><circle cx="19" cy="18" r="2" fill="#04121f"/>
+          <path d="M12 12L5 6M12 12L19 6M12 12L5 18M12 12L19 18" stroke="#04121f" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div>Student Builder Day<span class="sub">Rungta University</span></div>
+    </div>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tracks.html">Tracks</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="speakers.html">Speakers</a>
+      <a href="venue.html" class="active">Venue &amp; FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="btn-icon" data-share aria-label="Share this page">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      </button>
+      <a href="register.html" class="btn btn-primary">Register</a>
+      <div class="burger" id="burger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu glass glass-tight" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="tracks.html">Tracks</a>
+  <a href="agenda.html">Agenda</a>
+  <a href="speakers.html">Speakers</a>
+  <a href="venue.html" class="active">Venue &amp; FAQ</a>
+  <a href="register.html">Register</a>
+</div>
+
+<main>
+
+  <section class="page-hero wrap">
+    <div class="eyebrow" style="justify-content:center;">07 // Getting there</div>
+    <h1>Rungta University, Bhilai.</h1>
+    <p>Everything you need to find the venue, plus answers before you register.</p>
+  </section>
+
+  <section class="wrap" style="padding-top:0;">
+    <div class="venue-grid">
+      <div class="venue-copy reveal">
+        <h3>Kohka-Kurud Road, Bhilai</h3>
+        <p>Chhattisgarh 490024 — the day runs across the Main Auditorium and the Innovation Labs building, both on the main campus.</p>
+        <ul class="venue-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>On-campus auditorium seating 500, plus two dedicated innovation labs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2M7 15V9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6"/></svg>Free on-campus parking for two-wheelers and cars</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1"/></svg>Hostel tie-ups available for outstation students — ask at check-in</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Rungta+University+Bhilai+Chhattisgarh" target="_blank" rel="noopener">Get directions</a>
+      </div>
+      <div class="map-card reveal">
+        <img src="https://images.pexels.com/photos/730819/pexels-photo-730819.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="A university auditorium with tiered seating">
+        <div class="pin">
+          <div class="pin-dot"></div>
+          <span>Rungta University</span>
+          <small>Kohka-Kurud Road, Bhilai · CG 490024</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Before you register</div>
+      <h2>Frequently asked</h2>
+    </div>
+    <div id="faqList" style="max-width:760px;"></div>
+  </section>
+
+  <div class="wrap">
+    <div class="register-banner glass reveal">
+      <h2>500 seats. First come, first built.</h2>
+      <p>Registration takes under a minute and holds your seat instantly — no payment, no catch.</p>
+      <a href="register.html" class="btn btn-primary btn-lg">Reserve your seat</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="3" fill="#04121f"/><circle cx="5" cy="6" r="2" fill="#04121f"/><circle cx="19" cy="6" r="2" fill="#04121f"/>
+              <circle cx="5" cy="18" r="2" fill="#04121f"/><circle cx="19" cy="18" r="2" fill="#04121f"/>
+              <path d="M12 12L5 6M12 12L19 6M12 12L5 18M12 12L19 18" stroke="#04121f" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <div>Student Builder Day<span class="sub">Rungta University</span></div>
+        </div>
+        <p>Organized by the AWS Cloud Club at Rungta University — a student-led community under the AWS Student Builder program.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Event</h5>
+          <a href="tracks.html">Tracks</a>
+          <a href="agenda.html">Agenda</a>
+          <a href="speakers.html">Speakers</a>
+        </div>
+        <div class="footer-col">
+          <h5>Info</h5>
+          <a href="venue.html">Venue &amp; FAQ</a>
+          <a href="register.html">Register</a>
+          <a href="index.html">Home</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AWS Cloud Club, Rungta University</span>
+      <span>Bhilai, Chhattisgarh, India</span>
+    </div>
+    <p class="disclaimer">This is a community-organized, student-led event hosted by the AWS Cloud Club at Rungta University. It is not officially operated, sponsored, or endorsed by Amazon Web Services, Inc. Venue photography courtesy of contributors on Pexels, used under the Pexels license; illustrative only, not the actual campus building.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
